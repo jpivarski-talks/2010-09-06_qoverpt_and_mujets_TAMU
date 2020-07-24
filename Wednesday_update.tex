@@ -1,0 +1,97 @@
+\documentclass[compress]{beamer}
+\usepackage{ifthen,verbatim}
+
+\newcommand{\isnote}{}
+\xdefinecolor{lightyellow}{rgb}{1.,1.,0.25}
+\xdefinecolor{darkblue}{rgb}{0.1,0.1,0.7}
+
+%% Uncomment this to get annotations
+%% \def\notes{\addtocounter{page}{-1}
+%%            \renewcommand{\isnote}{*}
+%% 	   \beamertemplateshadingbackground{lightyellow}{white}
+%%            \begin{frame}
+%%            \frametitle{Notes for the previous page (page \insertpagenumber)}
+%%            \itemize}
+%% \def\endnotes{\enditemize
+%% 	      \end{frame}
+%%               \beamertemplateshadingbackground{white}{white}
+%%               \renewcommand{\isnote}{}}
+
+%% Uncomment this to not get annotations
+\def\notes{\comment}
+\def\endnotes{\endcomment}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{\mbox{ } \hfill
+\begin{minipage}{5.5 cm}
+\vspace{-0.75 cm} \small
+\end{minipage} \hfill
+\begin{minipage}{4.5 cm}
+\vspace{-0.75 cm} \small
+\begin{flushright}
+\ifthenelse{\equal{\insertpagenumber}{1}}{}{Jim Pivarski \hspace{0.2 cm} \insertpagenumber\isnote/\pageref{numpages}}
+\end{flushright}
+\end{minipage}\mbox{\hspace{0.2 cm}}\includegraphics[height=1 cm]{../cmslogo} \hspace{0.1 cm} \includegraphics[height=1 cm]{../tamulogo} \hspace{0.01 cm} \vspace{-1.05 cm}}
+
+\newcommand{\s}[1]{{\mbox{\scriptsize #1}}}
+
+\begin{document}
+%% \begin{notes}
+%% \item This is the annotated version of my talk.
+%% \item If you want the version that I am presenting, download the one
+%% labeled ``slides'' on Indico (or just ignore these yellow pages).
+%% \item The annotated version is provided for extra detail and a written
+%% record of comments that I intend to make orally.
+%% \item Yellow notes refer to the content on the {\it previous} page.
+%% \item All other slides are identical for the two versions.
+%% \end{notes}
+
+\small
+
+%% \begin{frame}
+%% \frametitle{Outline}
+%% \begin{itemize}\setlength{\itemsep}{0.75 cm}
+%% \item 
+%% \end{itemize}
+%% %% \hspace{-0.83 cm} \textcolor{darkblue}{\Large Outline2}
+%% \end{frame}
+
+%% \section*{First section}
+%% \begin{frame}
+%% \begin{center}
+%% \Huge \textcolor{blue}{First section}
+%% \end{center}
+%% \end{frame}
+
+\begin{frame}
+\frametitle{Schedule for a new alignment}
+\framesubtitle{Target: beginning of November.  Which of these are possible in 2 months?}
+\begin{itemize}
+\item Endcap disk alignment with collisions muons
+\begin{itemize}
+\item study of residuals versus momentum (partly done)
+\item understand fitter (the differences we see ought to be statistical: what's wrong with the statistics of the fit?)
+\item currently waiting for re-processed collisions dataset\ldots
+\end{itemize}
+
+\item Chamber alignment with low-momentum cosmics
+\begin{itemize}
+\item study of residuals versus momentum
+\item should add $|p|$-dependence to the fit: Gaussian $\sigma \to \sigma/|p|$
+\end{itemize}
+
+\item Chamber alignment with low-momentum collisions
+\begin{itemize}
+\item need at least $\mathcal{O}(10\mbox{ pb}^{-1})$ (not far in the future\ldots)
+\item study of low-$|p|$ cosmics residuals vs.\ low-$|p|$ collisions residuals
+\item compare collisions alignment in endcap with beam-halo and disk-shifts: that is, CSC chamber-level alignment ought to agree with the prior geometry within quoted uncertainties
+\end{itemize}
+
+\item Understand residuals inside of a chamber: if it's due to trigger
+  bias and trigger bias can only be excluded by asking for a second
+  muon, we'll need {\it a lot} more data to do a standard alignment
+\end{itemize}
+\label{numpages}
+\end{frame}
+
+\end{document}

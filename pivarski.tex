@@ -1,0 +1,177 @@
+\documentclass[compress]{beamer}
+\usepackage{ifthen,verbatim}
+
+\newcommand{\isnote}{}
+\xdefinecolor{lightyellow}{rgb}{1.,1.,0.25}
+\xdefinecolor{darkblue}{rgb}{0.1,0.1,0.7}
+
+%% Uncomment this to get annotations
+%% \def\notes{\addtocounter{page}{-1}
+%%            \renewcommand{\isnote}{*}
+%% 	   \beamertemplateshadingbackground{lightyellow}{white}
+%%            \begin{frame}
+%%            \frametitle{Notes for the previous page (page \insertpagenumber)}
+%%            \itemize}
+%% \def\endnotes{\enditemize
+%% 	      \end{frame}
+%%               \beamertemplateshadingbackground{white}{white}
+%%               \renewcommand{\isnote}{}}
+
+%% Uncomment this to not get annotations
+\def\notes{\comment}
+\def\endnotes{\endcomment}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{\mbox{ } \hfill
+\begin{minipage}{5.5 cm}
+\vspace{-0.75 cm} \small
+\end{minipage} \hfill
+\begin{minipage}{4.5 cm}
+\vspace{-0.75 cm} \small
+\begin{flushright}
+\ifthenelse{\equal{\insertpagenumber}{1}}{}{Jim Pivarski \hspace{0.2 cm} \insertpagenumber\isnote/\pageref{numpages}}
+\end{flushright}
+\end{minipage}\mbox{\hspace{0.2 cm}}\includegraphics[height=1 cm]{../cmslogo} \hspace{0.1 cm} \includegraphics[height=1 cm]{../tamulogo} \hspace{0.01 cm} \vspace{-1.05 cm}}
+
+\newcommand{\s}[1]{{\mbox{\scriptsize #1}}}
+
+\begin{document}
+\begin{frame}
+\vfill
+\begin{center}
+\textcolor{darkblue}{\Large Muon-jet analysis update}
+
+\vfill
+\begin{columns}
+\column{0.3\linewidth}
+\begin{center}
+\large
+Jim Pivarski
+\end{center}
+\end{columns}
+
+\begin{columns}
+\column{0.3\linewidth}
+\begin{center}
+\scriptsize
+{\it Texas A\&M University}
+\end{center}
+\end{columns}
+
+\vfill
+ 6 September, 2010
+
+\end{center}
+\end{frame}
+
+%% \begin{notes}
+%% \item This is the annotated version of my talk.
+%% \item If you want the version that I am presenting, download the one
+%% labeled ``slides'' on Indico (or just ignore these yellow pages).
+%% \item The annotated version is provided for extra detail and a written
+%% record of comments that I intend to make orally.
+%% \item Yellow notes refer to the content on the {\it previous} page.
+%% \item All other slides are identical for the two versions.
+%% \end{notes}
+
+\small
+
+%% \begin{frame}
+%% \frametitle{Outline}
+%% \begin{itemize}\setlength{\itemsep}{0.75 cm}
+%% \item 
+%% \end{itemize}
+%% %% \hspace{-0.83 cm} \textcolor{darkblue}{\Large Outline2}
+%% \end{frame}
+
+\begin{frame}
+\frametitle{Status}
+\begin{itemize}
+\item Most 3\_8\_2 jobs have completed; now I'm calculating integrated luminosities (a few of the jobs have failed, and we have a lot more samples now), making file lists for processing the output, and documenting all the new information on the ExoticaMuonJets twiki page (which has become my lab notebook for this analysis)
+\item List of new samples:
+\begin{itemize}
+\item 2.2 pb$^{-1}$ of data, 2 clean muon skim
+\item InclusiveMu5\_Pt* ($30 < \hat{p}_T < \infty$), skimmed (same background Monte Carlo as before)
+\item ppMuX and self-generated ppMuMuX (with loose generator-level cuts) to cover $\hat{p}_T < 30$ region (could explain the low-mass dimuon excess seen in data)
+\item Drell-Yan: self-generated 0.2--5, 5--10, and official 10--20, 20--$\infty$ samples
+\item $J/\psi$, $\psi' \to \mu\mu$, $\psi' \to J/\psi$ samples
+\item only the most important muon-pair guns
+\item Extra-$\mathcal{U}(1)$ and NMSSM models (one $m_h$, $m_a$ point)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Status (continued)}
+\begin{itemize}
+\item Samples now contain full trigger information and trigger matching for clean muons ((TrackerMuon with $p_T > 5$~GeV/$c$, $|\eta| < 2.4$, 2 or more arbitrated segments) {\bf or} GlobalMuon {\bf or} StandAloneMuon)
+\begin{itemize}
+\item can improve technique for ignoring muons solely responsible for trigger in plots
+\item trigger matching parameters: $\Delta R < 0.5$, $|\Delta p_T|/p_T < 50\%$, resolve ambiguities to minimize $\Delta R$, only consider clean muons
+\item same as MC-matching parameters except for clean muon requirement
+\end{itemize}
+
+\item Muons drawn from standard muon collection (with the last sample, I verified that what we need is a subset of the standard collection); there's a clear path for this becoming an AOD-based analysis
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Plans}
+\begin{itemize}
+\item Repeat analysis with the new samples
+\begin{itemize}
+\item finalize GlobalMuon inefficiency-in-barrel study
+\item low-level data/MC comparison with the latest tracking and alignment
+\item find out if new samples fill in gaps in high-level data/MC comparison
+\end{itemize}
+
+\item Summarize everything as a poster at CMS Physics Week (Bodrum)
+
+\item Update and clean up the note
+\begin{itemize}
+\item new version should be more focused (no more legacy plots which weren't the right thing to look at: I'm only going to re-make the useful plots)
+\item should indicate a clear path from start to finish: be a zeroth draft of the final paper
+\end{itemize}
+
+\item Test backgrounds-from-data idea (next page)
+\end{itemize}
+\end{frame}
+
+%% \section*{First section}
+%% \begin{frame}
+%% \begin{center}
+%% \Huge \textcolor{blue}{First section}
+%% \end{center}
+%% \end{frame}
+
+\begin{frame}
+\frametitle{Estimating backgrounds from data}
+\begin{itemize}
+\item Assumptions:
+\begin{itemize}
+\item most SM backgrounds in 4-$\mu$ channel are pairs of heavy quarks
+  ($b$ or $c$), each decaying to 2+ muons through two $W$s, a neutral
+  resonance ($J/\psi$) or both
+\item the decay chain of each heavy quark is statistically independent
+  of the other one (no CP correlations at hadron colliders, right?)
+\item we can accurately subtract Drell-Yan from the inclusive
+  distributions
+\end{itemize}
+
+\item Method:
+\begin{enumerate}
+\item select events with at least two well-separated muons, called
+  tags (e.g.\ pair mass $>$ 15~GeV/$c^{2}$ or $\Delta R > 0.5$);
+  remove Drell-Yan to leave only heavy quark pairs
+\item measure the fraction that have a second or third muon in close
+  proximity to one of the tags; this is the conditional probability
+  that the heavy quark will decay into two or more muons, given that
+  it decays into at least one
+\item square this probability to estimate the number of ``2+ muon, 2+
+  muon'' events relative to the number of ``1+ muon, 1+ muon'' events
+\end{enumerate}
+\end{itemize}
+\label{numpages}
+\end{frame}
+
+\end{document}
